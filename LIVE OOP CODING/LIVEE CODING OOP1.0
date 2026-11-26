@@ -1,0 +1,49 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package javaapplication43;
+
+/**
+ *
+ * @author MABIDA_CPE113
+ */
+public class JavaApplication43 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("==== ENGINEERING DISTANCE AND SLOPE ANALYZER====");
+        NewClass pointA = new NewClass(3, 4);
+        NewClass pointB = new NewClass(9, 12);
+        NewClass pointC = new NewClass(9, 20);
+
+        analyzeSegment("Point A", pointA, "Point B", pointB);
+
+        analyzeSegment("Point B", pointB, "Point C", pointC);
+
+        pointC.setX(15);
+        pointC.setY(4);
+        analyzeSegment("Point A", pointA, "Point C (Updated)", pointC);
+
+    }
+
+    private static void analyzeSegment(String label1, NewClass p1, String label2, NewClass p2) {
+
+        System.out.printf("%s: (%.2f, %.2f)%n", label1, p1.getX(), p1.getY());
+        System.out.printf("%s: (%.2f, %.2f)%n", label2, p2.getX(), p2.getY());
+        System.out.println();
+
+        double distance = p1.calculateDistance(p2);
+        System.out.printf("Distance: %.2f units%n", distance);
+
+        try {
+            double slope = p1.calculateSlope(p2);
+            System.out.printf("Slope: %.2f%n", slope);
+        } catch (ArithmeticException e) {
+            System.out.println("Slope: " + e.getMessage());
+        }
+
+    }
+}
